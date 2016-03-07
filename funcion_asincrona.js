@@ -1,6 +1,5 @@
 'use strict';
 
-
 console.log("Empezamos");
 
 var escribeTras2Segundos = function(texto, callback) {
