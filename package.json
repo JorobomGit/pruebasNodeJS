@@ -1,0 +1,22 @@
+{
+  "name": "pruebasnodejs",
+  "version": "1.0.0",
+  "description": "Pruebas basicas con node.js",
+  "main": "servidor_basico.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://JorobomGit@github.com/JorobomGit/pruebasNodeJS.git"
+  },
+  "author": "Jose Romero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JorobomGit/pruebasNodeJS/issues"
+  },
+  "homepage": "https://github.com/JorobomGit/pruebasNodeJS#readme",
+  "dependencies": {
+    "chance": "^1.0.1"
+  }
+}
