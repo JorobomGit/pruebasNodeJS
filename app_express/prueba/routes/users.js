@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var user = require('../models/user_model');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -9,7 +10,11 @@ router.get('/', function(req, res, next) {
 
 /* GET users listing. */
 router.get('/form', function(req, res, next) {
-  res.render('user_form', {name: 'Smith', age: 30});
+	//Pido datos al modelo
+  user.getUsers(function(err, users){
+  	//Cuando tengamos los datos realizamos callback y los mandamos a la vista:
+  	res.render('user_form', {users: users});
+  });
 });
 
 module.exports = router;
