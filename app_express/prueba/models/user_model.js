@@ -1,5 +1,7 @@
 'use strict';
 
+var conn = require('../lib/connectMongo.js');
+
 //Datos
 var users = [{
     name: 'Smith',
@@ -12,8 +14,14 @@ var users = [{
 //Metodos del modelo
 var user = {
 	getUsers: function(cb){
-
-		cb(null, users);
+		console.log(conn.db);
+		conn.db.collection('agentes').find({}).toArray(function(err, users){
+			if(err){
+				cb(err);
+				return;
+			}
+			cb(null, users);
+		});
 	}
 };
 
