@@ -1,21 +1,26 @@
 'use strict';
 
-//Datos
-var users = [{
-    name: 'Smith',
-    age: 30
-}, {
-    name: 'Pepe',
-    age: 23
-}];
+var conn = require('../lib/connectMongoose.js');
+var mongoose = require('mongoose');
 
-//Metodos del modelo
-var user = {
-	getUsers: function(cb){
+var userSchema = mongoose.Schema({
+    name: String,
+    age: Number
+});
 
-		cb(null, users);
-	}
+
+userSchema.statics.list = function(sort,cb) {
+    var query = User.find({});
+    query.sort(sort);
+    //query.skip(500);
+    //query.limit(1);
+    query.select('name age');
+    return query.exec(function(err, rows) {
+        if (err) {
+            return cb(err);
+        }
+        return cb(null, rows);
+    });
 };
 
-//Exporto el modelo
-module.exports = user;
+var User = mongoose.model('User', userSchema);
